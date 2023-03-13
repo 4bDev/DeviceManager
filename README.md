@@ -20,3 +20,6 @@ Here is the sample JSON data to test this with
  }
  ]
 }`
+
+OR
+Load the Sample-data.json file 
