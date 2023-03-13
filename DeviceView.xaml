@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="DeviceManager.DeviceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
+             mc:Ignorable="d" 
+             x:Name="deviceView"
+             Width="auto" MinWidth="500">
+    <Grid Margin="0,5,0,5" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition  /> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle
+            Grid.Row="0"
+            Fill="AliceBlue" Grid.RowSpan="2"/>
+
+        <StackPanel Orientation="Vertical" Grid.IsSharedSizeScope="True">
+            <Label Grid.Column="0" FontSize="15" FontWeight="Bold" Content="{Binding Device.Name,RelativeSource={RelativeSource AncestorType=UserControl},Mode = TwoWay}" ></Label>
+            <Grid Margin="10 0 10 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">Title</Label>
+                <TextBox Grid.Column="1" Text="{Binding Device.Name, RelativeSource={RelativeSource AncestorType=UserControl},Mode = TwoWay }" ></TextBox>
+            </Grid>
+            <Grid Margin="10 0 10 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">Interval</Label>
+                <TextBox Grid.Column="1" Text="{Binding Device.Interval,RelativeSource={RelativeSource AncestorType=UserControl},Mode = TwoWay}" ></TextBox>
+            </Grid>
+            <Grid Margin="10 0 10 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">Operation</Label>
+                <ComboBox x:Name="Operation_CB" Grid.Column="1" SelectedItem="{Binding Device.Operation,RelativeSource={RelativeSource AncestorType=UserControl},Mode = TwoWay}"></ComboBox>
+                <!--<TextBox Grid.Column="1" Text="{Binding Device.Operation,RelativeSource={RelativeSource AncestorType=UserControl},Mode = TwoWay}" ></TextBox>-->
+            </Grid>
+        </StackPanel>
+        <ScrollViewer Grid.Column="1" Height="150">
+            <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Width="Auto" TextWrapping="WrapWithOverflow" Text="{Binding Device.Log,RelativeSource={RelativeSource AncestorType=UserControl},Mode =TwoWay}" Background="Black" Foreground="White" />
+        </ScrollViewer>
+    </Grid>
+</UserControl>
